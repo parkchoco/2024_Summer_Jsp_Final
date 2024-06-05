@@ -136,6 +136,6 @@ body {
 			</form>
 		</div>
 		<%@ include file="Brand.jsp"%>
-	</div>
+	</div> 
 </body>
 </html>
