@@ -31,10 +31,11 @@
     </div>
     
 	
+	
 	<c:forEach var="row" items="${resultSet.rows}">
 	
 	<div class="container">
-		<form name="newMember"action="processUpdateMember.jsp" method="post" onsubmit="return checkForm()">
+		<form name="newMember"action="UpdateMember.jsp" method="post" onsubmit="return checkForm()">
 				<div class="mb-3 row">
 				<label class="col-sm-2 ">아이디</label>
 				<div class="col-sm-3">
@@ -76,7 +77,7 @@
 				<div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10 ">
 					<input type="submit" class="btn btn-primary" value="회원수정 "> 
-					<a href="deleteMember.jsp" class="btn btn-primary">회원탈퇴</a>
+					<a href="DeleteMember.jsp" class="btn btn-primary">회원탈퇴</a>
 				</div>
 			</div>
 		</form>	
@@ -88,7 +89,7 @@
 </body>
 </html>
 <script type="text/javascript">
-	on checkForm() {
+	function checkForm() {
 		if (!document.newMember.id.value) {
 			alert("아이디를 입력하세요.");
 			return false;

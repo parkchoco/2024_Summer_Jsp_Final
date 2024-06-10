@@ -60,12 +60,15 @@
 
     <c:if test="${result >= 1}">
         <div style="color: green;">
-            <p>Record inserted successfully.</p>
+                <%
+            session.invalidate();
+        %>
+            <jsp:include page="./SignUp_Success.jsp" />  
         </div>
     </c:if>
     <c:if test="${result == 0}">
         <div style="color: red;">
-            <p>Failed to insert the record.</p>
+            <jsp:include page="./SignUp_Failed.jsp" />
         </div>
     </c:if>
 </c:if>
