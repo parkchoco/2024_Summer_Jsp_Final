@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 
-	String id = request.getParameter("id");
-	String password = request.getParameter("password");
+String id = request.getParameter("id");
+String password = request.getParameter("password");
 %>
 
 <sql:setDataSource var="dataSource"
@@ -21,7 +21,7 @@
 
 <c:forEach var="row" items="${resultSet.rows}">
 	<%
-		session.setAttribute("sessionId", id);
+	session.setAttribute("sessionId", id);
 	%>
 	<c:redirect url="LoginPage.jsp?msg=2" />
 </c:forEach>

@@ -13,8 +13,27 @@
 
 
     boolean pointsRecordedToday = dao.hasPointsRecordedToday(sessionId);
-    System.out.println("pointsRecordedToday: " + pointsRecordedToday); 
+    System.out.println("pointsRecordedToday: " + pointsRecordedToday);
+    if (!pointsRecordedToday) {
 
+        dao.updateUserPoints(sessionId, 10);
+        dao.savePointsHistory(sessionId, 10);
+
+
+        Integer userPoints = (Integer) session.getAttribute("userPoints");
+        if (userPoints == null) {
+            userPoints = 0;
+        }
+        userPoints += 10;
+        session.setAttribute("userPoints", userPoints);
+        System.out.println("New user points: " + userPoints);
+
+
+        out.println("<script>alert('출석완료');</script>");
+    } else {
+
+        out.println("<script>alert('이미 출석 하셨습니다');</script>");
+    }
 
 
     Calendar cal = Calendar.getInstance();
@@ -24,6 +43,7 @@
 
     List<Date> pointsDates = dao.getUserPointsDatesForMonth(sessionId, currentYear, currentMonth);
     System.out.println("pointsDates: " + pointsDates); 
+
 
     Set<Integer> markedDays = new HashSet<>();
     for (Date date : pointsDates) {
@@ -132,6 +152,8 @@
 </head>
 <body>
 <div class="container py-4 position-relative">
+<jsp:include page="/home.jsp" />
+    
     
     <div class="calendar">
         <div class="header">

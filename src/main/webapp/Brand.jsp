@@ -14,5 +14,5 @@ footer {
 </style>
 
 <footer class="pt-3 mt-4 text-body-secondary border-top custom-footer">
-	&copy; WhateverTV
+	&copy; DAILY STUDY
 </footer>

@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%
     request.setCharacterEncoding("UTF-8");
 
@@ -12,7 +12,6 @@
     String phone = request.getParameter("phone");
     String address = request.getParameter("address");
 
-    // Debugging statements to print the parameter values to the console
     System.out.println("ID: " + id);
     System.out.println("Password: " + password);
     System.out.println("Password Confirm: " + password_confirm);
@@ -39,36 +38,38 @@
 %>
 
 <c:if test="${hasError}">
-    <div style="color: red;">
-        <p>Error: <%= errorMessage %></p>
-    </div>
+	<div style="color: red;">
+		<p>
+			Error:
+			<%= errorMessage %></p>
+	</div>
 </c:if>
 
 <c:if test="${!hasError}">
-    <sql:setDataSource var="dataSource"
-        url="jdbc:mysql://localhost:3306/Final_projectDB"
-        driver="com.mysql.cj.jdbc.Driver" user="root" password="1234" />
+	<sql:setDataSource var="dataSource"
+		url="jdbc:mysql://localhost:3306/Final_projectDB"
+		driver="com.mysql.cj.jdbc.Driver" user="root" password="1234" />
 
-    <sql:update dataSource="${dataSource}" var="result">
+	<sql:update dataSource="${dataSource}" var="result">
         INSERT INTO member (id, password, name, phone, address) VALUES (?, ?, ?, ?, ?)
         <sql:param value="<%= id %>" />
-        <sql:param value="<%= password %>" />
-        <sql:param value="<%= name %>" />
-        <sql:param value="<%= phone %>" />
-        <sql:param value="<%= address %>" />
-    </sql:update>
+		<sql:param value="<%= password %>" />
+		<sql:param value="<%= name %>" />
+		<sql:param value="<%= phone %>" />
+		<sql:param value="<%= address %>" />
+	</sql:update>
 
-    <c:if test="${result >= 1}">
-        <div style="color: green;">
-                <%
+	<c:if test="${result >= 1}">
+		<div style="color: green;">
+			<%
             session.invalidate();
         %>
-            <jsp:include page="./SignUp_Success.jsp" />  
-        </div>
-    </c:if>
-    <c:if test="${result == 0}">
-        <div style="color: red;">
-            <jsp:include page="./SignUp_Failed.jsp" />
-        </div>
-    </c:if>
+			<jsp:include page="/SignUp_Success.jsp" />
+		</div>
+	</c:if>
+	<c:if test="${result == 0}">
+		<div style="color: red;">
+			<jsp:include page="/SignUp_Failed.jsp" />
+		</div>
+	</c:if>
 </c:if>

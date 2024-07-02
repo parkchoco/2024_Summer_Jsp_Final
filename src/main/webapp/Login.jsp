@@ -20,13 +20,10 @@
 
  <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="title">MY MEMORY</h1>
+        <h1 class="title">DAILY STUDY</h1>
               
       </div>
     </div>
-	
-	
-
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-signin-heading">Please sign in</h3>
@@ -48,9 +45,6 @@
      	 			<input type="password" class="form-control" name='password' placeholder="Password">
     				 <label for="floatingPassword">Password</label>
 			</div>
-
-   
-  				
    				<div class="d-flex justify-content-center">
 							<a href="./SignUp.jsp" class="btn btn-secondary me-2"
 								style="width: 100px;">SIGN UP</a>
